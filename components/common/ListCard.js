@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import LoveOrHateButton from "./LoveOrHateButton";
 
 const ListCard = ({ orchid, addFavorite, showDeleteBtn, setChanged }) => {
   const navigation = useNavigation();
@@ -9,33 +10,27 @@ const ListCard = ({ orchid, addFavorite, showDeleteBtn, setChanged }) => {
   return (
     <Pressable
       style={styles.cardContainer}
-      onPress={() => navigation.navigate("OrchidDetail", orchid)}
+      onPress={() =>
+        navigation.navigate("OrchidDetail", {
+          orchid: orchid,
+          addFavorite: addFavorite,
+          showDeleteBtn: showDeleteBtn,
+          setChanged: setChanged,
+        })
+      }
     >
       <Image source={{ uri: orchid.avatar }} style={styles.avatar} />
       <View style={styles.overlay}>
         <Text style={styles.name}>{orchid.name}</Text>
       </View>
-      <Pressable
-        style={styles.buttonContainer}
-        onPress={() =>
-          addFavorite(orchid).then(() => {
-            setChanged(new Date().getTime());
-          })
-        }
-      >
-        <Ionicons
-          name="heart"
-          size={30}
-          color="red"
-          style={{ display: showDeleteBtn ? "none" : "flex" }}
+      <View style={styles.buttonContainer}>
+        <LoveOrHateButton
+          addFavorite={addFavorite}
+          orchid={orchid}
+          setChanged={setChanged}
+          showDeleteBtn={showDeleteBtn}
         />
-        <Ionicons
-          name="trash"
-          size={30}
-          color="red"
-          style={{ display: showDeleteBtn ? "flex" : "none" }}
-        />
-      </Pressable>
+      </View>
     </Pressable>
   );
 };

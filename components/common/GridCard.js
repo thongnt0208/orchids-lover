@@ -5,23 +5,33 @@ import { useNavigation } from "@react-navigation/native";
 
 const GridCard = ({ orchid, addFavorite }) => {
   const navigation = useNavigation();
+  const LoveButton = (
+    <Pressable
+      style={styles.buttonContainer}
+      onPress={() => addFavorite(orchid)}
+    >
+      <Ionicons name="heart" size={30} color="red" />
+    </Pressable>
+  );
 
   return (
     <Pressable
       style={styles.cardContainer}
-      onPress={() => navigation.navigate("OrchidDetail", orchid)}
+      onPress={() =>
+        navigation.navigate("OrchidDetail", {
+          orchid: orchid,
+          addFavorite: addFavorite,
+          showDeleteBtn: false,
+          LoveOrHateButton: LoveButton,
+        })
+      }
     >
       {/* <Text>{addFavorite.toString()}</Text> */}
       <Image source={{ uri: orchid.avatar }} style={styles.avatar} />
       <View style={styles.overlay}>
         <Text style={styles.name}>{orchid.name}</Text>
       </View>
-      <Pressable
-        style={styles.buttonContainer}
-        onPress={() => addFavorite(orchid)}
-      >
-        <Ionicons name="heart" size={30} color="red" />
-      </Pressable>
+      {LoveButton}
     </Pressable>
   );
 };

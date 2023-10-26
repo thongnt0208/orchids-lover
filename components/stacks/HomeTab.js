@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import HomeStack from './HomeStack';
 import FavoriteStack from './FavoriteStack';
+import { greenBg2, greenDefault, white } from '../../const/colors';
 
 const Tab = createBottomTabNavigator();
 const HomeTab = () => {
@@ -27,10 +28,10 @@ const HomeTab = () => {
               // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarInactiveBackgroundColor: '#333333',
-            tabBarActiveBackgroundColor: '#f4ce14',
-            tabBarActiveTintColor: '#333333',
-            tabBarInactiveTintColor: '#f4ce14',
+            tabBarInactiveBackgroundColor: greenBg2,
+            tabBarActiveBackgroundColor: greenDefault,
+            tabBarActiveTintColor: white,
+            tabBarInactiveTintColor: 'black',
             headerShown: false,
           })}
       >

@@ -6,6 +6,13 @@ This repository stores the code of the Assignment 3 project in the React Native 
 - Add Orchids to the favorite list in AsyncStorage
 - CRUD list of favorite Orchids from AsyncStorage
 
+## Additional features:
+- Prevent go back from HomeScreen to WelcomeScreen
+- Animation at WelcomeScreen by react-native-reanimated
+
+## Drawbacks:
+- Should load orchids list from WelcomeScreen to optimize performance
+
 ## Teacher's requirements:
 At the end of this assignment, you should have completed the following:
 • Allowed users to select an orchid and add it to the list of favorites that are saved on their 
