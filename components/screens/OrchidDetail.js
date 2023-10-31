@@ -7,7 +7,7 @@ import { bgDefault, blackDefault, greenDefault, red } from "../../const/colors";
 
 const OrchidDetail = () => {
   const route = useRoute();
-  const { orchid, addFavorite, showDeleteBtn, setChanged } = route.params;
+  const { orchid, actionFunction, showDeleteBtn, setChanged } = route.params;
 
   return (
     <View style={styles.container}>
@@ -17,7 +17,7 @@ const OrchidDetail = () => {
       <Text>{orchid.description}</Text>
       <View style={styles.floatBotton}>
         <LoveOrHateButton
-          addFavorite={addFavorite}
+          actionFunction={actionFunction}
           orchid={orchid}
           setChanged={setChanged}
           showDeleteBtn={showDeleteBtn}

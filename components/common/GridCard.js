@@ -3,12 +3,12 @@ import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const GridCard = ({ orchid, addFavorite }) => {
+const GridCard = ({ orchid, actionFunction }) => {
   const navigation = useNavigation();
   const LoveButton = (
     <Pressable
       style={styles.buttonContainer}
-      onPress={() => addFavorite(orchid)}
+      onPress={() => actionFunction(orchid)}
     >
       <Ionicons name="heart" size={30} color="red" />
     </Pressable>
@@ -20,13 +20,13 @@ const GridCard = ({ orchid, addFavorite }) => {
       onPress={() =>
         navigation.navigate("OrchidDetail", {
           orchid: orchid,
-          addFavorite: addFavorite,
+          actionFunction: actionFunction,
           showDeleteBtn: false,
           LoveOrHateButton: LoveButton,
         })
       }
     >
-      {/* <Text>{addFavorite.toString()}</Text> */}
+      {/* <Text>{actionFunction.toString()}</Text> */}
       <Image source={{ uri: orchid.avatar }} style={styles.avatar} />
       <View style={styles.overlay}>
         <Text style={styles.name}>{orchid.name}</Text>

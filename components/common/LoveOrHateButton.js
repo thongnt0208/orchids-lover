@@ -3,12 +3,12 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Pressable } from "react-native";
 
-const LoveOrHateButton = ({ addFavorite, orchid, setChanged, showDeleteBtn }) => {
+const LoveOrHateButton = ({ actionFunction, orchid, setChanged, showDeleteBtn }) => {
   return (
     <Pressable
       style={{ /* your button styles here */ }}
       onPress={() =>
-        addFavorite(orchid)
+        actionFunction(orchid)
           .then((dt) => {
             setChanged(new Date().getTime());
           })

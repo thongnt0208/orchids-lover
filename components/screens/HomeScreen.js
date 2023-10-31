@@ -44,7 +44,7 @@ const HomeScreen = () => {
           <GridCard
             key={index}
             orchid={orchid}
-            addFavorite={AddOrchidToFavorite}
+            actionFunction={AddOrchidToFavorite}
           />
         ))}
       </ScrollView>
@@ -77,7 +77,7 @@ const HomeScreen = () => {
               key={i}
               orchid={orchid}
               showDeleteBtn={false}
-              addFavorite={AddOrchidToFavorite}
+              actionFunction={AddOrchidToFavorite}
             />
           ))}
         </View>

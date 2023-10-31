@@ -16,6 +16,10 @@ const FavoriteScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
   let [listChanged, setListChanged] = useState("");
 
+  let setTheListChanged = () => {
+    setListChanged(new Date().getTime());
+  }
+
   useEffect(() => {
     GetFavoriteList()
       .then((result) => {
@@ -76,7 +80,7 @@ const FavoriteScreen = () => {
             key={i}
             orchid={orchid}
             showDeleteBtn={true}
-            addFavorite={RemoveOrchidFromFavorite}
+            actionFunction={RemoveOrchidFromFavorite}
             setChanged={setListChanged}
           />
         ))}

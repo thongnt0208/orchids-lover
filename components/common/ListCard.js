@@ -4,8 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import LoveOrHateButton from "./LoveOrHateButton";
 
-const ListCard = ({ orchid, addFavorite, showDeleteBtn, setChanged }) => {
+const ListCard = ({ orchid, actionFunction, showDeleteBtn, setChanged }) => {
   const navigation = useNavigation();
+  console.log("setChanged", JSON.stringify(setChanged));
 
   return (
     <Pressable
@@ -13,7 +14,7 @@ const ListCard = ({ orchid, addFavorite, showDeleteBtn, setChanged }) => {
       onPress={() =>
         navigation.navigate("OrchidDetail", {
           orchid: orchid,
-          addFavorite: addFavorite,
+          actionFunction: actionFunction,
           showDeleteBtn: showDeleteBtn,
           setChanged: setChanged,
         })
@@ -24,12 +25,46 @@ const ListCard = ({ orchid, addFavorite, showDeleteBtn, setChanged }) => {
         <Text style={styles.name}>{orchid.name}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <LoveOrHateButton
-          addFavorite={addFavorite}
-          orchid={orchid}
-          setChanged={setChanged}
-          showDeleteBtn={showDeleteBtn}
-        />
+        <Pressable
+          style={
+            {
+              /* your button styles here */
+            }
+          }
+          onPress={() => {
+            if (showDeleteBtn) {
+              actionFunction(orchid, setChanged)
+                .then((dt) => {
+                  console.log("Action did");
+                  setChanged(new Date().getTime());
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            } else {
+              actionFunction(orchid)
+                .then((dt) => {
+                  console.log(dt);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }
+          }}
+        >
+          <Ionicons
+            name="heart"
+            size={30}
+            color="red"
+            style={{ display: showDeleteBtn ? "none" : "flex" }}
+          />
+          <Ionicons
+            name="trash"
+            size={30}
+            color="red"
+            style={{ display: showDeleteBtn ? "flex" : "none" }}
+          />
+        </Pressable>
       </View>
     </Pressable>
   );
