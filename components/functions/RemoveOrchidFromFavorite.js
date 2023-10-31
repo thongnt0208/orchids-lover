@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ToastAndroid, Alert } from "react-native";
 import Toast from "react-native-toast-message";
 
-export const RemoveOrchidFromFavorite = async (orchid) => {
+const RemoveOrchidFromFavorite = async (orchid) => {
   let id = orchid.id;
 
   // Show a confirmation dialog before removing the orchid
@@ -68,3 +68,38 @@ export const RemoveOrchidFromFavorite = async (orchid) => {
     ]
   );
 };
+
+const RemoveAllOrchidsFromFavorite = async (setListChanged) => {
+  // Show a confirmation dialog before removing the orchid
+  Alert.alert("Xác nhận", `Bạn muốn xoá tất cả khỏi danh sách yêu thích?`, [
+    {
+      text: "Huỷ",
+      onPress: () => {
+        // User canceled the removal, do nothing.
+        return;
+      },
+      style: "cancel",
+    },
+    {
+      text: "Xoá",
+      onPress: async () => {
+        try {
+          // Update AsyncStorage with the modified list
+          await AsyncStorage.setItem("FavoriteOrchidsList", JSON.stringify([]));
+          setListChanged(new Date().getTime());
+          ToastAndroid.showWithGravity(
+            "Orchids are removed from Favorites",
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM
+          );
+        } catch (error) {
+          // Handle errors, e.g., AsyncStorage access errors
+          console.error("Error removing orchids from favorite list:", error);
+          throw error;
+        }
+      },
+    },
+  ]);
+};
+
+export { RemoveOrchidFromFavorite, RemoveAllOrchidsFromFavorite };

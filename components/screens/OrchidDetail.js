@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   avatar: {
     width: 300,

@@ -1,5 +1,6 @@
 # orchids-lover
 This repository stores the code of the Assignment 3 project in the React Native with Expo Course (MMA301) 
+Author: Nguyễn Trung Thông - SE160850 - thongntse160850@fpt.edu.vn
 
 ## General Requirements:
 - Display list of Orchids from API
@@ -11,6 +12,10 @@ This repository stores the code of the Assignment 3 project in the React Native 
 - Animation at WelcomeScreen by react-native-reanimated
 
 ## Drawbacks:
+- Bug: Default "Tất cả" filter
+- Button state change when save
+- "There is no" when favourite is empty
+- Button tab: heights
 - Should load orchids list from WelcomeScreen to optimize performance
 
 ## Teacher's requirements:

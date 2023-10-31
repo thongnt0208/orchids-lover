@@ -9,7 +9,7 @@ const LoveOrHateButton = ({ addFavorite, orchid, setChanged, showDeleteBtn }) =>
       style={{ /* your button styles here */ }}
       onPress={() =>
         addFavorite(orchid)
-          .then(() => {
+          .then((dt) => {
             setChanged(new Date().getTime());
           })
           .catch((err) => {

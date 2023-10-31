@@ -1,10 +1,13 @@
-import { View, Button, RefreshControl } from "react-native";
+import { View, Button, RefreshControl, Pressable, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { GetFavoriteList } from "../functions/GetFavoriteList";
 import { ScrollView } from "react-native-gesture-handler";
 import ListCard from "../common/ListCard";
-import { RemoveOrchidFromFavorite } from "../functions/RemoveOrchidFromFavorite";
+import {
+  RemoveAllOrchidsFromFavorite,
+  RemoveOrchidFromFavorite,
+} from "../functions/RemoveOrchidFromFavorite";
 import { CommonStyles } from "../styles/CommonStyles";
 
 const FavoriteScreen = () => {
@@ -46,7 +49,22 @@ const FavoriteScreen = () => {
           <Button title="Tag" />
         </ScrollView>
       </View> */}
-
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          paddingRight: 10,
+          paddingTop: 10,
+          paddingBottom: 10,
+        }}
+      >
+        <Pressable
+          style={CommonStyles.button}
+          onPress={() => RemoveAllOrchidsFromFavorite(setListChanged)}
+        >
+          <Text style={CommonStyles.buttonLabel}>Delete All</Text>
+        </Pressable>
+      </View>
       <ScrollView
         contentContainerStyle={{ padding: 20, paddingBottom: 70 }}
         refreshControl={
