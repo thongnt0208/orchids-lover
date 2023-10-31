@@ -54,7 +54,7 @@ const OrchidsList = () => {
       <ScrollView>
         <View style={{ padding: 20 }}>
           {/* Vertical Scrolling area with many <ListCard></ListCard>*/}
-          {(selectedCategory === "Tất cả" ? orchidsList : filteredOrchids).map((orchid, i) => (
+          {((!selectedCategory || selectedCategory === "Tất cả") ? orchidsList : filteredOrchids).map((orchid, i) => (
             <ListCard
               key={i}
               orchid={orchid}
