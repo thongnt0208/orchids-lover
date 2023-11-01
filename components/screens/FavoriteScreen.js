@@ -18,7 +18,18 @@ const FavoriteScreen = () => {
 
   let setTheListChanged = () => {
     setListChanged(new Date().getTime());
-  }
+  };
+
+  setTimeout(() => {
+    GetFavoriteList()
+      .then((result) => {
+        setFavouriteList(result);
+        // console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, 2000);
 
   useEffect(() => {
     GetFavoriteList()

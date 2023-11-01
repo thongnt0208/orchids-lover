@@ -6,7 +6,6 @@ import LoveOrHateButton from "./LoveOrHateButton";
 
 const ListCard = ({ orchid, actionFunction, showDeleteBtn, setChanged }) => {
   const navigation = useNavigation();
-  console.log("setChanged", JSON.stringify(setChanged));
 
   return (
     <Pressable
@@ -44,7 +43,7 @@ const ListCard = ({ orchid, actionFunction, showDeleteBtn, setChanged }) => {
             } else {
               actionFunction(orchid)
                 .then((dt) => {
-                  console.log(dt);
+                  // console.log(dt);
                 })
                 .catch((err) => {
                   console.log(err);
